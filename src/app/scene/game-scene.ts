@@ -169,7 +169,6 @@ export class GameScene extends Phaser.Scene {
               this.talkingBubbleText,
               this.talkingBubble,
               this.talkingBird,
-              this.cupBoard,
               this.wall,
               this.tableWare,
               this.pottedPlant,
@@ -177,7 +176,9 @@ export class GameScene extends Phaser.Scene {
             ],
             350
           );
-
+          this.cupBoard = this.add.image(200, 580, "Cupboard").setDepth(0);
+          this.cupBoard.setScale(0.13);
+          this.talkingBird.setDepth(1);
           //showText(this, this.talkingBubbleText, "Pick the first ingredient");
         }
 
@@ -209,7 +210,7 @@ export class GameScene extends Phaser.Scene {
       .setAlpha(0).setDepth(10);
     this.talkingBird = this.add
       .sprite(260, 580, "Kea_1_Mouth_closed")
-      .setScale(0.12).setDepth(2);
+      .setScale(0.12).setDepth(1);
 
     //? why ?
     const fruits = {
@@ -228,22 +229,22 @@ export class GameScene extends Phaser.Scene {
     const talkSfx = this.sound.add('kea_talk');
     talkSfx.play({ loop: true });
 
-    if (!this.isGameOver) {
-      this.talkingBubbleText = this.add
-        .text(250, 160, `Let's get started! \nPlaese make me a \n${prop} Puree`, {
-          fontSize: "28px",
-          color: "black",
-          fontFamily: "Poppins",
-        })
-        .setOrigin(0.5)
-        .setAlpha(0).setDepth(11);
+    // if (!this.isGameOver) {
+    this.talkingBubbleText = this.add
+      .text(250, 160, `Let's get started! \nPlaese make me a \n${prop} Puree`, {
+        fontSize: "28px",
+        color: "black",
+        fontFamily: "Poppins",
+      })
+      .setOrigin(0.5)
+      .setAlpha(0).setDepth(11);
 
-      // this.talkingBubbleText2 = this.add.text(90, 195, `${prop} Puree`, {
-      //   fontSize: "28px",
-      //   color: "black",
-      //   fontFamily: "Poppins-Bold",
-      // }).setAlpha(0);
-    }
+    // this.talkingBubbleText2 = this.add.text(90, 195, `${prop} Puree`, {
+    //   fontSize: "28px",
+    //   color: "black",
+    //   fontFamily: "Poppins-Bold",
+    // }).setAlpha(0);
+    // }
     this.talkingBird.on("animationstart", () => {
       showObject(this, [this.talkingBubbleText, this.talkingBubble], 350);
     });
