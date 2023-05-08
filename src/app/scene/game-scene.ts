@@ -145,17 +145,17 @@ export class GameScene extends Phaser.Scene {
           if (matched == 1) reward = 3;
           if (matched >= 2) reward = 5;
 
-          this.talkingBubbleText.depth += 1;
-          this.talkingBubbleText2.setVisible(false);
+          // this.talkingBubbleText.depth += 1;
+          // this.talkingBubbleText2.setVisible(false);
           showText(this, this.talkingBubbleText, `Way to go! \nYou just Scored ${reward}$ \nKeababies store credit`);
 
           this.time.addEvent({
             delay: 4000,
             callback: () => {
               console.log('open url');
-              if (matched >= 2) window.open('https://keagifts.typeform.com/to/COuyykWz');
-              if (matched == 1) window.open('https://keagifts.typeform.com/to/gCkAww64');
-              if (matched <= 0) window.open('https://keagifts.typeform.com/to/TPeb8f1z');
+              if (matched >= 2) window.open('https://keagifts.typeform.com/to/COuyykWz', '_self');
+              if (matched == 1) window.open('https://keagifts.typeform.com/to/gCkAww64', '_self');
+              if (matched <= 0) window.open('https://keagifts.typeform.com/to/TPeb8f1z', '_self');
               // this.scene.start("GameScene");
               // this.isLevelDone = false;
             },
@@ -163,12 +163,6 @@ export class GameScene extends Phaser.Scene {
 
           this.HideAllFruits();
           hideObject(this, [this.desk, this.cupBoard]);
-          // this.createBackground();
-          // this.pottedPlant.depth += 1;
-          // this.tableWare.depth += 1;
-
-          // this.talkingBird.setDepth(2);
-          // this.wall.depth -= 1;
           showObject(
             this,
             [
@@ -200,22 +194,22 @@ export class GameScene extends Phaser.Scene {
     this.cupBoard.setScale(0.13);
     this.wall = this.add.image(150, 112, "Window");
     this.wall.setScale(0.1);
-    this.tableWare = this.add.image(515, 340, "Tableware").setScale(0.12);
-    this.pottedPlant = this.add.image(270, 316, "PottedPlant").setScale(0.12);
+    this.tableWare = this.add.image(515, 340, "Tableware").setScale(0.12).setDepth(3);
+    this.pottedPlant = this.add.image(270, 316, "PottedPlant").setScale(0.12).setDepth(3);
     this.desk = this.add.image(270, 877, "Desk").setScale(0.128);
-    this.desk.setDepth(1);
+    this.desk.setDepth(2);
     this.foodJars = this.add.image(40, 705, "FoodJars").setScale(0.1);
-    this.foodJars.setDepth(2);
+    this.foodJars.setDepth(4);
   }
 
   private Step_01(): void {
     this.talkingBubble = this.add
       .image(240, 200, "TalkingBubble")
       .setScale(0.11)
-      .setAlpha(0);
+      .setAlpha(0).setDepth(10);
     this.talkingBird = this.add
       .sprite(260, 580, "Kea_1_Mouth_closed")
-      .setScale(0.12);
+      .setScale(0.12).setDepth(2);
 
     //? why ?
     const fruits = {
@@ -236,19 +230,19 @@ export class GameScene extends Phaser.Scene {
 
     if (!this.isGameOver) {
       this.talkingBubbleText = this.add
-        .text(250, 160, "Let's get started! \nPlaese make me a ", {
+        .text(250, 160, `Let's get started! \nPlaese make me a \n${prop} Puree`, {
           fontSize: "28px",
           color: "black",
           fontFamily: "Poppins",
         })
         .setOrigin(0.5)
-        .setAlpha(0);
+        .setAlpha(0).setDepth(11);
 
-      this.talkingBubbleText2 = this.add.text(90, 195, `${prop} Puree`, {
-        fontSize: "28px",
-        color: "black",
-        fontFamily: "Poppins-Bold",
-      });
+      // this.talkingBubbleText2 = this.add.text(90, 195, `${prop} Puree`, {
+      //   fontSize: "28px",
+      //   color: "black",
+      //   fontFamily: "Poppins-Bold",
+      // }).setAlpha(0);
     }
     this.talkingBird.on("animationstart", () => {
       showObject(this, [this.talkingBubbleText, this.talkingBubble], 350);
