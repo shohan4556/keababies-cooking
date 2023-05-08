@@ -1,0 +1,105 @@
+{
+    "preload": {
+      "files": [
+        {
+          "type": "image",
+          "key": "Avocado_Seed",
+          "url": "assets/Fruits/Avocado/Avocado_Seed.png"
+        },
+        {
+            "type": "image",
+            "key": "Avocado_1",
+            "url": "assets/Fruits/Avocado/Avocado_1.png"
+        }
+        ,
+        {
+            "type": "image",
+            "key": "Avocado_2",
+            "url": "assets/Fruits/Avocado/Avocado_2.png"
+        }
+        ,
+        {
+            "type": "image",
+            "key": "Avocado_3",
+            "url": "assets/Fruits/Avocado/Avocado_3.png"
+        }
+        ,
+        {
+            "type": "image",
+            "key": "Avocado_Without_Seed",
+            "url": "assets/Fruits/Avocado/Avocado_Without_Seed.png"
+        },
+        {
+            "type": "image",
+            "key": "Cupboard",
+            "url": "assets/Background/Cupboard.png"
+        },
+        {
+            "type": "image",
+            "key": "Desk",
+            "url": "assets/Background/Desk.png"
+        },
+        {
+            "type": "image",
+            "key": "FoodJars",
+            "url": "assets/Background/FoodJars.png"
+        },
+        {
+            "type": "image",
+            "key": "PottedPlant",
+            "url": "assets/Background/PottedPlant.png"
+        },
+        {
+            "type": "image",
+            "key": "TalkingBubble",
+            "url": "assets/Background/TalkingBubble.png"
+        },
+        {
+            "type": "image",
+            "key": "Kea_1_Mouth_closed",
+            "url": "assets/Talkingbird/Kea_1_Mouth_closed.png"
+        },
+        {
+            "type": "image",
+            "key": "Kea_1_Mouth_opened",
+            "url": "assets/Talkingbird/Kea_1_Mouth_opened.png"
+        },
+        {
+            "type": "image",
+            "key": "Kea_1_Mouth_closed",
+            "url": "assets/Talkingbird/Kea_2_Mouth_closed.png"
+        },
+        {
+            "type": "image",
+            "key": "Kea_2_Mouth_opened",
+            "url": "assets/Talkingbird/Kea_2_Mouth_opened.png"
+        },
+        {
+            "type": "image",
+            "key": "FoodJar_Opened",
+            "url": "assets/FoodJar/FoodJar_Opened.png"
+        },
+        {
+            "type": "image",
+            "key": "FoodJar_Closed",
+            "url": "assets/FoodJar/FoodJar_Closed.png"
+        },
+        {
+            "type": "image",
+            "key": "Tableware",
+            "url": "assets/Background/Tableware.png"
+        },
+        {
+            "type": "image",
+            "key": "Wall",
+            "url": "assets/Background/Wal.png"
+        },
+        {
+            "type": "image",
+            "key": "Window",
+            "url": "assets/Background/Window.png"
+        }
+
+      ]
+    }
+}
