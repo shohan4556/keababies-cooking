@@ -127,7 +127,7 @@ export class BootScene extends Phaser.Scene {
   create() { }
 
   complete(): void {
-    console.log('complete', this.scene.systems.plugins);
+    // console.log('complete', this.scene.systems.plugins);
     // WebFont.load({
     //   google: {
     //     families: ['Poppins', 'Nosifer', 'Poppins-Bold'],

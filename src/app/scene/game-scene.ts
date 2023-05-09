@@ -301,7 +301,7 @@ export class GameScene extends Phaser.Scene {
       .text(260, 60, "Pick the first ingredient", {
         fontSize: "24px",
         color: "black",
-        fontFamily: "Poppins",
+        fontFamily: "Poppins-Regular",
       })
       .setOrigin(0.5)
       .setDepth(20);
