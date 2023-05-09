@@ -14,6 +14,12 @@ export class Avocado extends Phaser.GameObjects.Image {
     private fruitsContainer: Phaser.GameObjects.Container;
     private FoodJar_Opened: Phaser.GameObjects.Image;
 
+    private portioning: boolean;
+    private isMashing: boolean;
+    private isDiceStep1: boolean;
+    private isDiceStep2: boolean;
+    private isSlicing: boolean;
+
      constructor(scene, x, y, handContainer: HandContainer, talkingBubbleText: Phaser.GameObjects.Text, firstFruit){
 
         super(scene, x, y, "Avocado_2");
@@ -32,6 +38,8 @@ export class Avocado extends Phaser.GameObjects.Image {
         this.setInteractive();
         this.on('pointerdown', ()=>{
             this.disableInteractive();
+            if(!this.isSlicing){
+             this.isSlicing = true;
             //tweenToPosition(this.scene, handContainer, handContainer.x + 100, handContainer.y + 100);
             this.avocadoWithSeed.visible = true;
            
@@ -63,12 +71,15 @@ export class Avocado extends Phaser.GameObjects.Image {
             })
 
             rotateObject(this.scene, this, 10, x - 60, y + 50);
+          }
             
         },this.scene);
+        
 
         this.avocadoWithSeed.setInteractive();
         this.avocadoWithSeed.on("pointerdown", ()=>{
             if(!this.isSeedRemoved){
+                this.avocadoWithSeed.disableInteractive();
                 PlaySound(this.scene, "remove_seed");
                 handContainer.visible = true;
                 tweenToPosition(this.scene, this.handContainer, this.avocadoWithSeed.x, this.avocadoWithSeed.y, 1000);
@@ -79,7 +90,6 @@ export class Avocado extends Phaser.GameObjects.Image {
                     y: this.seed.y + 100,
                     duration: 600,
                     onComplete:()=>{
-                        this.avocadoWithSeed.disableInteractive();
                         StopSound();
                        //tweenToPosition(this.scene, this.seed, this.seed.x, 300);
                        this.scene.tweens.add({
@@ -154,6 +164,7 @@ export class Avocado extends Phaser.GameObjects.Image {
         this.bow.on('pointerdown', ()=>{
             //this.bow.disableInteractive();
             if(!this.isMixed){
+                this.isMixed = true;
                 PlaySound(this.scene, "mix_sound");
                 this.scene.tweens.add({
                     targets: this.handContainer, 
@@ -172,7 +183,7 @@ export class Avocado extends Phaser.GameObjects.Image {
                             y: this.y - 120,
                             duration: 500,
                             onComplete: ()=>{
-                              this.isMixed = true;
+                             
                               fruit_2.visible = false;
                               this.PortionFruits(fruit_1);
                             }
@@ -195,7 +206,8 @@ export class Avocado extends Phaser.GameObjects.Image {
         showText(this.scene, this.talkingBubbleText, "Portion them in Prep Jars");
         this.bow.on('pointerdown', ()=>{
             this.bow.disableInteractive();
-            if(this.isMixed){
+            if(!this.portioning){
+                this.portioning = true;
                 this.scene.tweens.add({
                     targets: this.fruitsContainer,
                     angle: 30,

@@ -15,6 +15,11 @@ export class Apple extends Phaser.GameObjects.Image {
   private FoodJar_Opened: Phaser.GameObjects.Image;
   private isFirstFruit: boolean;
 
+  private portioning: boolean;
+  private isMashing: boolean;
+  private isDiceStep1: boolean;
+  private isDiceStep2: boolean;
+
   constructor(
     scene: Phaser.Scene,
     x,
@@ -66,17 +71,21 @@ export class Apple extends Phaser.GameObjects.Image {
     pear_3.setInteractive();
     pear_3.on("pointerdown", () => {
       pear_3.disableInteractive();
-      this.scene.tweens.add({
-        targets: this.handContainer,
-        x: this.x,
-        y: this.y + 200,
-        duration: 500,
-        onComplete: () => {
-          alphaTween(this.scene, pear_3, 0, 500);
-          this.handContainer.setPosition(this.x + 100, this.y - 100);
-          this.DiceStep_2();
-        },
-      });
+      // double
+      if(!this.isDiceStep1){
+        this.isDiceStep1 = true;
+        this.scene.tweens.add({
+          targets: this.handContainer,
+          x: this.x,
+          y: this.y + 200,
+          duration: 500,
+          onComplete: () => {
+            alphaTween(this.scene, pear_3, 0, 500);
+            this.handContainer.setPosition(this.x + 100, this.y - 100);
+            this.DiceStep_2();
+          },
+        });
+      }
     });
   }
 
@@ -87,8 +96,12 @@ export class Apple extends Phaser.GameObjects.Image {
       .setDepth(12);
     pear_4.setInteractive();
     pear_4.on("pointerdown", () => {
-      pear_4.disableInteractive();
-      this.DiceStep_3(pear_4);
+      // double
+      if(!this.isDiceStep2){
+        this.isDiceStep2 = true;
+        pear_4.disableInteractive();
+        this.DiceStep_3(pear_4);
+      }
     });
   }
 
@@ -181,28 +194,32 @@ export class Apple extends Phaser.GameObjects.Image {
     this.handContainer.ShowMasher();
     Diced_Pear.setInteractive();
     Diced_Pear.on("pointerdown", () => {
-      Diced_Pear.setScale(0.15);
-      Diced_Pear.disableInteractive();
-      // mash animation
-      Diced_Pear.play("Avocado_Mash_Anim");
-      // hand tween
-      this.scene.tweens.add({
-        targets: this.handContainer,
-        y: this.y - 60,
-        duration: 500,
-        repeat: 1,
-        yoyo: true,
-        onComplete: () => {
-          hideObject(this.scene, [Diced_Pear], 500);
-          this.handContainer.visible = false;
-          if (this.isFirstFruit) {
-            this.scene.events.emit("clearLevel");
-          } else {
-            // mix
-            this.MixTheFruts();
-          }
-        },
-      });
+      // double
+      if(!this.isMashing){
+        this.isMashing = true;
+        Diced_Pear.setScale(0.15);
+        Diced_Pear.disableInteractive();
+        // mash animation
+        Diced_Pear.play("Avocado_Mash_Anim");
+        // hand tween
+        this.scene.tweens.add({
+          targets: this.handContainer,
+          y: this.y - 60,
+          duration: 500,
+          repeat: 1,
+          yoyo: true,
+          onComplete: () => {
+            hideObject(this.scene, [Diced_Pear], 500);
+            this.handContainer.visible = false;
+            if (this.isFirstFruit) {
+              this.scene.events.emit("clearLevel");
+            } else {
+              // mix
+              this.MixTheFruts();
+            }
+          },
+        });
+      }
     });
   }
 
@@ -230,6 +247,8 @@ export class Apple extends Phaser.GameObjects.Image {
     this.bow.on("pointerdown", () => {
       //this.bow.disableInteractive();
       if (!this.isMixed) {
+        // dobule
+        this.isMixed = true;
         this.scene.tweens.add({
           targets: this.handContainer,
           x: this.x + 120,
@@ -246,7 +265,7 @@ export class Apple extends Phaser.GameObjects.Image {
               y: this.y - 120,
               duration: 500,
               onComplete: () => {
-                this.isMixed = true;
+                
                 fruit_2.visible = false;
                 this.PortionFruits(fruit_1);
               },
@@ -276,47 +295,52 @@ export class Apple extends Phaser.GameObjects.Image {
   private PortionFruits(fruit_1: Phaser.GameObjects.Image): void {
     showText(this.scene, this.talkingBubbleText, "Portion them in Prep Jars");
     this.bow.on("pointerdown", () => {
-      this.bow.disableInteractive();
-      if (this.isMixed) {
-        this.scene.tweens.add({
-          targets: this.fruitsContainer,
-          angle: 30,
-          duration: 500,
-        });
-
-        this.scene.tweens.add({
-          targets: fruit_1,
-          x: fruit_1.x + 80,
-          y: fruit_1.y + 20,
-          scaleY: 0.09,
-          duration: 300,
-        });
-
-        let juice = this.scene.add
-          .image(
-            this.x - 20,
-            this.y + 220,
-            "Peach_and_Pear_or_Apple_or_Avocado_Puree_1"
-          )
-          .setDepth(11)
-          .setOrigin(0.5, 1);
-        juice.scaleX = 0.06;
-        juice.scaleY = 0;
-        this.scene.tweens.add({
-          targets: juice,
-          scaleY: 0.15,
-          duration: 1000,
-          onComplete: () => {
-            hideObject(this.scene, [
-              juice,
-              fruit_1,
-              this.bow,
-              this.FoodJar_Opened,
-            ]);
-            this.scene.events.emit("clearLevel");
-          },
-        });
+      // double click
+      if(!this.portioning){
+        this.portioning = true;
+        this.bow.disableInteractive();
+        if (this.isMixed) {
+          this.scene.tweens.add({
+            targets: this.fruitsContainer,
+            angle: 30,
+            duration: 500,
+          });
+  
+          this.scene.tweens.add({
+            targets: fruit_1,
+            x: fruit_1.x + 80,
+            y: fruit_1.y + 20,
+            scaleY: 0.09,
+            duration: 300,
+          });
+  
+          let juice = this.scene.add
+            .image(
+              this.x - 20,
+              this.y + 220,
+              "Peach_and_Pear_or_Apple_or_Avocado_Puree_1"
+            )
+            .setDepth(11)
+            .setOrigin(0.5, 1);
+          juice.scaleX = 0.06;
+          juice.scaleY = 0;
+          this.scene.tweens.add({
+            targets: juice,
+            scaleY: 0.15,
+            duration: 1000,
+            onComplete: () => {
+              hideObject(this.scene, [
+                juice,
+                fruit_1,
+                this.bow,
+                this.FoodJar_Opened,
+              ]);
+              this.scene.events.emit("clearLevel");
+            },
+          });
+        }
       }
     });
+      
   }
 }
