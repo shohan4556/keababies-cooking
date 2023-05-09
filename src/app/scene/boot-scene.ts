@@ -10,6 +10,7 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload(): void {
+    console.log('version 0.01');
 
     this.load.image('Cupboard', 'assets/Background/Cupboard.png');
     this.load.image('Desk', 'assets/Background/Desk.png');
