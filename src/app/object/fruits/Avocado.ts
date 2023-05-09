@@ -79,6 +79,7 @@ export class Avocado extends Phaser.GameObjects.Image {
                     y: this.seed.y + 100,
                     duration: 600,
                     onComplete:()=>{
+                        this.avocadoWithSeed.disableInteractive();
                         StopSound();
                        //tweenToPosition(this.scene, this.seed, this.seed.x, 300);
                        this.scene.tweens.add({
@@ -100,6 +101,7 @@ export class Avocado extends Phaser.GameObjects.Image {
      }
 
      private mashTheFruits(): void{
+        this.avocadoWithSeed.setInteractive();
         showText(this.scene, this.talkingBubbleText, 'Mash the fruit');
         this.avocadoWithSeed.setTexture("Avocado_Puree_1");
         this.handContainer.visible = true;
@@ -107,6 +109,7 @@ export class Avocado extends Phaser.GameObjects.Image {
         this.handContainer.ShowMasher();
         if(this.isSeedRemoved){
             this.avocadoWithSeed.on('pointerdown', ()=>{
+                this.avocadoWithSeed.disableInteractive();
                // tweenToPosition(this.scene, this.handContainer, this.handContainer.x, this.handContainer.y + 100, 100, true, 100, true)
                 this.scene.tweens.add({
                     targets: this.handContainer,
@@ -116,7 +119,6 @@ export class Avocado extends Phaser.GameObjects.Image {
                     repeat: 3,
                     duration: 200, 
                     onComplete: ()=>{
-                        this.avocadoWithSeed.disableInteractive();
                         hideObject(this.scene, [this.avocadoWithSeed, this.seed]);
                         this.handContainer.visible = false;
                         this.handContainer.visible = false;

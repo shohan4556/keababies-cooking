@@ -234,7 +234,7 @@ export class GameScene extends Phaser.Scene {
       .text(250, 160, `Let's get started! \nPlaese make me a \n${prop} Puree`, {
         fontSize: "28px",
         color: "black",
-        fontFamily: "Poppins",
+        fontFamily: "Poppins-Regular",
       })
       .setOrigin(0.5)
       .setAlpha(0).setDepth(11);
