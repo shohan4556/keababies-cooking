@@ -65,14 +65,14 @@ export class Apple extends Phaser.GameObjects.Image {
       .image(this.x, this.y, "Apple_3")
       .setScale(0.15)
       .setDepth(12);
-    showText(this.scene, this.talkingBubbleText, "Dice the fruits");
+    showText(this.scene, this.talkingBubbleText, "Dice the fruit");
     this.handContainer.ShowKnfie();
     this.handContainer.setPosition(this.x + 200, this.y - 100);
     pear_3.setInteractive();
     pear_3.on("pointerdown", () => {
       pear_3.disableInteractive();
       // double
-      if(!this.isDiceStep1){
+      if (!this.isDiceStep1) {
         this.isDiceStep1 = true;
         this.scene.tweens.add({
           targets: this.handContainer,
@@ -97,7 +97,7 @@ export class Apple extends Phaser.GameObjects.Image {
     pear_4.setInteractive();
     pear_4.on("pointerdown", () => {
       // double
-      if(!this.isDiceStep2){
+      if (!this.isDiceStep2) {
         this.isDiceStep2 = true;
         pear_4.disableInteractive();
         this.DiceStep_3(pear_4);
@@ -195,7 +195,7 @@ export class Apple extends Phaser.GameObjects.Image {
     Diced_Pear.setInteractive();
     Diced_Pear.on("pointerdown", () => {
       // double
-      if(!this.isMashing){
+      if (!this.isMashing) {
         this.isMashing = true;
         Diced_Pear.setScale(0.15);
         Diced_Pear.disableInteractive();
@@ -265,7 +265,7 @@ export class Apple extends Phaser.GameObjects.Image {
               y: this.y - 120,
               duration: 500,
               onComplete: () => {
-                
+
                 fruit_2.visible = false;
                 this.PortionFruits(fruit_1);
               },
@@ -296,7 +296,7 @@ export class Apple extends Phaser.GameObjects.Image {
     showText(this.scene, this.talkingBubbleText, "Portion them in Prep Jars");
     this.bow.on("pointerdown", () => {
       // double click
-      if(!this.portioning){
+      if (!this.portioning) {
         this.portioning = true;
         this.bow.disableInteractive();
         if (this.isMixed) {
@@ -305,7 +305,7 @@ export class Apple extends Phaser.GameObjects.Image {
             angle: 30,
             duration: 500,
           });
-  
+
           this.scene.tweens.add({
             targets: fruit_1,
             x: fruit_1.x + 80,
@@ -313,7 +313,7 @@ export class Apple extends Phaser.GameObjects.Image {
             scaleY: 0.09,
             duration: 300,
           });
-  
+
           let juice = this.scene.add
             .image(
               this.x - 20,
@@ -341,6 +341,6 @@ export class Apple extends Phaser.GameObjects.Image {
         }
       }
     });
-      
+
   }
 }
