@@ -10,7 +10,6 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload(): void {
-    console.log('version 0.01');
 
     this.load.image('Cupboard', 'assets/Background/Cupboard.png');
     this.load.image('Desk', 'assets/Background/Desk.png');
@@ -36,6 +35,7 @@ export class BootScene extends Phaser.Scene {
     this.load.image('Apple_2', 'assets/Fruits/Apple/Apple_2.png');
     this.load.image('Apple_3', 'assets/Fruits/Apple/Apple_3.png');
     this.load.image('Apple_4', 'assets/Fruits/Apple/Apple_4.png');
+    this.load.image('apple_slice', 'assets/Fruits/Apple/apple_slice.png');
 
     //Avocado
     this.load.image('Avocado_Seed', 'assets/Fruits/Avocado/Avocado_Seed.png');
