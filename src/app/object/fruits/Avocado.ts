@@ -34,15 +34,11 @@ export class Avocado extends Phaser.GameObjects.Image {
         this.avocadoWithSeed.visible = false;
         this.seed = this.scene.add.image(x, y, "Avocado_Seed").setDepth(12).setScale(.15);
         this.seed.visible = false;
-        handContainer.ShowKnfie();
-        this.setInteractive();
-        this.on('pointerdown', ()=>{
-            this.disableInteractive();
-            if(!this.isSlicing){
-             this.isSlicing = true;
+
+
             //tweenToPosition(this.scene, handContainer, handContainer.x + 100, handContainer.y + 100);
             this.avocadoWithSeed.visible = true;
-           
+            rotateObject(this.scene, this, 10, x - 60, y + 50);
             this.scene.tweens.add({
                 targets: handContainer, 
                 x: this.x,
@@ -50,64 +46,62 @@ export class Avocado extends Phaser.GameObjects.Image {
                 duration: 500,
                 onComplete: ()=>{
                   //  handContainer.visible = false;
-                    this.visible = false;
-                    this.avocadoWithSeed.setScale(0.15);
-                    showText(this.scene, this.talkingBubbleText, 'Remove the seed');
+                    hideObject(this.scene, this, 500);
+
+                    this.scene.time.addEvent({
+                        delay: 1000,
+                        callback: ()=>{
+                            this.avocadoWithSeed.setScale(0.15);
+                            showText(this.scene, this.talkingBubbleText, 'Remove the seed');
+
+
+                            this.scene.tweens.add({
+                                targets: this.avocadoWithSeed,
+                                x: this.avocadoWithSeed.x,
+                                duration: 500,
+                                onComplete: ()=>{
+                                    this.avocadoWithSeed.setPosition(x, y);
+                                    this.avocadoWithSeed.setTexture("Avocado_Without_Seed");
+                                    this.seed.visible = true;
+                                    handContainer.ShowSpoon();
+                                    handContainer.setPosition(this.avocadoWithSeed.x + 260, this.avocadoWithSeed.y - 120);
+
+                                    PlaySound(this.scene, "remove_seed");
+                                    handContainer.visible = true;
+                                    tweenToPosition(this.scene, this.handContainer, this.avocadoWithSeed.x, this.avocadoWithSeed.y, 1000);
+                                    //seed pos change
+                                    this.scene.tweens.add({
+                                        targets: this.seed,
+                                        x: this.seed.x - 200,
+                                        y: this.seed.y + 100,
+                                        duration: 600,
+                                        onComplete:()=>{
+                                            StopSound();
+                                           //tweenToPosition(this.scene, this.seed, this.seed.x, 300);
+                                           this.scene.tweens.add({
+                                               targets: this.seed,
+                                               y: 300,
+                                               duration: 500,
+                                               onComplete:()=>{
+                                                handContainer.visible = false;
+                                                this.isSeedRemoved = true;
+                                                this.mashTheFruits();
+                                               }
+                                           })
+                                        }
+                                    })
+                                }
+                            })
+
+ 
+         }
+                    })
+                  
                 }
             })
 
-            this.scene.tweens.add({
-                targets: this.avocadoWithSeed,
-                x: this.avocadoWithSeed.x + 100,
-                duration: 500,
-                onComplete: ()=>{
-                    this.avocadoWithSeed.setPosition(x, y);
-                    this.avocadoWithSeed.setTexture("Avocado_Without_Seed");
-                    this.seed.visible = true;
-                    handContainer.ShowSpoon();
-                    handContainer.setPosition(this.avocadoWithSeed.x + 160, this.avocadoWithSeed.y - 120);
 
-                }
-            })
-
-            rotateObject(this.scene, this, 10, x - 60, y + 50);
-          }
-            
-        },this.scene);
-        
-
-        this.avocadoWithSeed.setInteractive();
-        this.avocadoWithSeed.on("pointerdown", ()=>{
-            if(!this.isSeedRemoved){
-                this.avocadoWithSeed.disableInteractive();
-                PlaySound(this.scene, "remove_seed");
-                handContainer.visible = true;
-                tweenToPosition(this.scene, this.handContainer, this.avocadoWithSeed.x, this.avocadoWithSeed.y, 1000);
-                //seed pos change
-                this.scene.tweens.add({
-                    targets: this.seed,
-                    x: this.seed.x - 200,
-                    y: this.seed.y + 100,
-                    duration: 600,
-                    onComplete:()=>{
-                        StopSound();
-                       //tweenToPosition(this.scene, this.seed, this.seed.x, 300);
-                       this.scene.tweens.add({
-                           targets: this.seed,
-                           y: 300,
-                           duration: 500,
-                           onComplete:()=>{
-                            handContainer.visible = false;
-                            this.isSeedRemoved = true;
-                            this.mashTheFruits();
-                           }
-                       })
-                    }
-                })
-            }
-
-        }, this.scene);
-
+     
      }
 
      private mashTheFruits(): void{
@@ -117,9 +111,7 @@ export class Avocado extends Phaser.GameObjects.Image {
         this.handContainer.visible = true;
         this.handContainer.setPosition(this.x + 150, this.y - 250);
         this.handContainer.ShowMasher();
-        if(this.isSeedRemoved){
-            this.avocadoWithSeed.on('pointerdown', ()=>{
-                this.avocadoWithSeed.disableInteractive();
+
                // tweenToPosition(this.scene, this.handContainer, this.handContainer.x, this.handContainer.y + 100, 100, true, 100, true)
                 this.scene.tweens.add({
                     targets: this.handContainer,
@@ -142,8 +134,8 @@ export class Avocado extends Phaser.GameObjects.Image {
                 })
 
                 this.avocadoWithSeed.play("Avocado_Mash_Anim");
-            });
-        }
+ 
+        
 
         
      }
@@ -160,12 +152,6 @@ export class Avocado extends Phaser.GameObjects.Image {
         this.handContainer.ShowSpoon();
         this.handContainer.setPosition(this.x + 300, this.y - 300);
         
-        this.bow.setInteractive();
-        this.bow.on('pointerdown', ()=>{
-            //this.bow.disableInteractive();
-            if(!this.isMixed){
-                this.isMixed = true;
-                PlaySound(this.scene, "mix_sound");
                 this.scene.tweens.add({
                     targets: this.handContainer, 
                     x: this.x + 120,
@@ -175,7 +161,6 @@ export class Avocado extends Phaser.GameObjects.Image {
                     duration: 500,
                     onComplete: ()=>{
                         this.handContainer.visible = false;
-                        StopSound();
                         // ready animation for portion
                         this.scene.tweens.add({
                             targets: this.fruitsContainer,
@@ -183,7 +168,7 @@ export class Avocado extends Phaser.GameObjects.Image {
                             y: this.y - 120,
                             duration: 500,
                             onComplete: ()=>{
-                             
+                              
                               fruit_2.visible = false;
                               this.PortionFruits(fruit_1);
                             }
@@ -194,50 +179,37 @@ export class Avocado extends Phaser.GameObjects.Image {
                 })
     
                 tweenToPosition(this.scene, fruit_1, fruit_1.x - 20, fruit_1.y, 200, true, 4, false);
-            }
-   
-        })
-
-
-        
     }
 
     private PortionFruits(fruit_1: Phaser.GameObjects.Image): void {
         showText(this.scene, this.talkingBubbleText, "Portion them in Prep Jars");
-        this.bow.on('pointerdown', ()=>{
-            this.bow.disableInteractive();
-            if(!this.portioning){
-                this.portioning = true;
-                this.scene.tweens.add({
-                    targets: this.fruitsContainer,
-                    angle: 30,
-                    duration: 500
-                })
+                    this.scene.tweens.add({
+                        targets: this.fruitsContainer,
+                        angle: 30,
+                        duration: 500
+                    })
+    
+                    this.scene.tweens.add({
+                        targets: fruit_1,
+                        x: fruit_1.x + 80,
+                        y: fruit_1.y + 20,
+                        scaleY: .09,
+                        duration: 300
+                    })
+    
+                   let juice = this.scene.add.image(this.x - 20, this.y + 220, "Peach_and_Pear_or_Apple_or_Avocado_Puree_1").setDepth(11).setOrigin(0.5, 1);
+                   juice.scaleX = 0.06;
+                   juice.scaleY = 0;              
+                   this.scene.tweens.add({
+                    targets: juice,
+                    scaleY: .15,
+                    duration: 1000,
+                    onComplete: ()=>{
+                        hideObject(this.scene, [juice, fruit_1, this.bow, this.FoodJar_Opened]);
+                        this.scene.events.emit("clearLevel");
+                    }
+                   })
 
-                this.scene.tweens.add({
-                    targets: fruit_1,
-                    x: fruit_1.x + 80,
-                    y: fruit_1.y + 20,
-                    scaleY: .09,
-                    duration: 300
-                })
-
-               let juice = this.scene.add.image(this.x - 20, this.y + 220, "Peach_and_Pear_or_Apple_or_Avocado_Puree_1").setDepth(11).setOrigin(0.5, 1);
-               juice.scaleX = 0.06;
-               juice.scaleY = 0;              
-               this.scene.tweens.add({
-                targets: juice,
-                scaleY: .15,
-                duration: 1000,
-                onComplete: ()=>{
-                    hideObject(this.scene, [juice, fruit_1, this.bow, this.FoodJar_Opened]);
-                    this.scene.events.emit("clearLevel");
-                }
-               })
-
-            }
-
-        })
     }
 
 

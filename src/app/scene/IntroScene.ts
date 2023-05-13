@@ -34,7 +34,7 @@ export class IntroScene extends Phaser.Scene {
         tweenToPosition(this, talkingBird, 1200, '+=0', 12000);
 
         this.time.addEvent({
-            delay: 8000,
+            delay: 800,
             callback: () => {
                 bgMusic.stop();
                 this.scene.start('GameScene');

@@ -73,7 +73,7 @@ export class GameScene extends Phaser.Scene {
         { key: "Kea_1_Mouth_closed", duration: 90 },
       ],
       frameRate: 8,
-      repeat: 5, // todo fix repeat here add sfx
+      repeat: 0, 
     });
 
     this.anims.create({
@@ -84,7 +84,7 @@ export class GameScene extends Phaser.Scene {
         { key: "Avocado_Puree_2", duration: 100 },
       ],
       frameRate: 8,
-      repeat: 3, // todo fix repeat here add sfx
+      repeat: 3, 
     });
 
     this.anims.create({
@@ -93,9 +93,24 @@ export class GameScene extends Phaser.Scene {
       frames: [
         { key: "Apple_and_Pear_Puree_1", duration: 80 },
         { key: "Apple_and_Pear_Puree_2", duration: 80 },
+        { key: "Apple_and_Pear_Puree_1", duration: 80 },
+        { key: "Apple_and_Pear_Puree_2", duration: 80 }
       ],
       frameRate: 8,
-      repeat: 2, // todo fix repeat here add sfx
+      repeat: 2, 
+    });
+
+    this.anims.create({
+      key: "Peach_Mash_Anim",
+      delay: 10,
+      frames: [
+        { key: "Peach_and_Pear_or_Apple_or_Avocado_Puree_1", duration: 80 },
+        { key: "Peach_and_Pear_or_Apple_or_Avocado_Puree_3", duration: 80 },
+        { key: "Peach_and_Pear_or_Apple_or_Avocado_Puree_1", duration: 80 },
+        { key: "Peach_and_Pear_or_Apple_or_Avocado_Puree_3", duration: 80 }
+      ],
+      frameRate: 8,
+      repeat: 2, 
     });
   }
 

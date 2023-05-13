@@ -24,6 +24,7 @@ export class HandContainer extends Phaser.GameObjects.Container {
 
     public ShowOnlyHand(): void{
         this.knife.visible = false;
+        this.visible = true; 
     }
 
     public ShowSpoon(): void{
