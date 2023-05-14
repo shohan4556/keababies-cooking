@@ -3,7 +3,7 @@ import { Avocado } from "../object/fruits/Avocado";
 import { Peach } from "../object/fruits/peach";
 import { Pear } from "../object/fruits/pear";
 import { HandContainer } from "../object/handContainer";
-import { hideObject, showObject, showText, tweenToPosition } from "./utils";
+import { hideObject, option, showObject, showText, tweenToPosition } from "./utils";
 
 export class GameScene extends Phaser.Scene {
   private cupBoard: Phaser.GameObjects.Image;
@@ -406,8 +406,11 @@ export class GameScene extends Phaser.Scene {
     });
 
     if (this.firstFruitsSelected) {
+      option.currentFruitName = selectedFruit.name;
       this.firstFruitsSelected = false;
     } else {
+      console.log("First fruits "+selectedFruit.name)
+      option.firstFruitName = selectedFruit.name;
       this.firstFruitsSelected = true;
     }
 
@@ -415,6 +418,7 @@ export class GameScene extends Phaser.Scene {
     this.matchedFruit.push(selectedFruit.name);
     //? selected fruit here 
     console.log("Step_04:Selected Fruit", selectedFruit.name, this.fruitList);
+    
 
 
     selectedFruit.setPosition(this.cameras.main.centerX, -110);

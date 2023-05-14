@@ -1,6 +1,7 @@
 import {
   alphaTween,
   hideObject,
+  option,
   PlaySound,
   showText,
   StopSound,
@@ -36,7 +37,6 @@ export class Peach extends Phaser.GameObjects.Image {
       this.setInteractive();
       this.handContainer = handContainer;
       this.talkingBubbleText = talkingBubbleText;
-
           // slice
           let slice = this.scene.add.image(this.x, this.y + 100, "Peach_Skin").setDepth(12).setScale(-0.15, 0.15).setOrigin(0, .5); 
           slice.visible = false;
@@ -215,8 +215,8 @@ export class Peach extends Phaser.GameObjects.Image {
     showText(this.scene, this.talkingBubbleText, "Mix them up");
     this.fruitsContainer = this.scene.add.container(this.x, this.y).setDepth(120);
     this.bow = this.scene.add.image(0, 0, "Bow").setDepth(10).setScale(.15);
-    let fruit_1 = this.scene.add.image(0, -95, "Apple_and_Pear_Puree_1").setDepth(11).setScale(.12);
-    let fruit_2 = this.scene.add.image(-30, -80, "Avocado_Puree_1").setDepth(102).setScale(.1);
+    let fruit_1 = this.scene.add.image(0, -95, `${option.firstFruitName}_Puree_1`).setDepth(11).setScale(.12);
+    let fruit_2 = this.scene.add.image(-30, -80, `${option.currentFruitName}_Puree_1`).setDepth(102).setScale(.1);
 
     this.fruitsContainer.add([this.bow, fruit_1, fruit_2]);
 
