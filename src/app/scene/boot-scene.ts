@@ -137,7 +137,8 @@ export class BootScene extends Phaser.Scene {
     //     families: ['Poppins', 'Poppins-Bold'],
     //   },
     // });
-    this.scene.start("IntroScene");
+    // this.scene.start("IntroScene");
+    this.scene.start('GameScene');
   }
 
 }

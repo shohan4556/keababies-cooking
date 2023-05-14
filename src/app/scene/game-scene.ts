@@ -127,7 +127,7 @@ export class GameScene extends Phaser.Scene {
       "clearLevel",
       () => {
         if (this.firstFruitsSelected) {
-          showText(this, this.talkingBubbleText, "Select second fruits");
+          showText(this, this.talkingBubbleText, "Select second fruit");
         } else {
           console.log("level done 0");
 
@@ -246,7 +246,7 @@ export class GameScene extends Phaser.Scene {
 
     // if (!this.isGameOver) {
     this.talkingBubbleText = this.add
-      .text(250, 160, `Let's get started! \nPlaese make me a \n${prop} Puree`, {
+      .text(250, 160, `Let's get started! \nPlease make me a \n${prop} Puree`, {
         fontSize: "28px",
         color: "black",
         fontFamily: "Poppins-Regular",
