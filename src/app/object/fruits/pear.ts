@@ -113,7 +113,7 @@ export class Pear extends Phaser.GameObjects.Image {
     private Simmer(): void {
         let soucepan = this.scene.add.image(this.x, this.y + 100, "Soucepan").setDepth(13).setScale(.1).setAlpha(0);
         alphaTween(this.scene, soucepan, 1, 500, 1000);
-        showText(this.scene, this.talkingBubbleText, "Simmer in a saucepen");
+        showText(this.scene, this.talkingBubbleText, "Simmer in a saucepan");
         this.handContainer.setPosition(this.x + 100, this.y - 300);
         this.handContainer.ShowOnlyHand();
         let Diced_Pear = this.scene.add.image(this.x, this.y - 200, "Diced_Avocado").setScale(0.1).setDepth(12).setAlpha(0);

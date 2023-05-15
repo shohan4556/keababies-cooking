@@ -126,7 +126,7 @@ export class Peach extends Phaser.GameObjects.Image {
       .setScale(0.1)
       .setAlpha(0);
     alphaTween(this.scene, soucepan, 1, 500, 1000);
-    showText(this.scene, this.talkingBubbleText, "Simmer in a saucepen");
+    showText(this.scene, this.talkingBubbleText, "Simmer in a saucepan");
     this.handContainer.setPosition(this.x + 100, this.y - 300);
     this.handContainer.ShowOnlyHand();
     let Diced_Pear = this.scene.add

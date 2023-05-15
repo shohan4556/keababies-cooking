@@ -112,7 +112,7 @@ export class GameScene extends Phaser.Scene {
       "clearLevel",
       () => {
         if (this.firstFruitsSelected) {
-          showText(this, this.talkingBubbleText, "Select second fruit");
+          showText(this, this.talkingBubbleText, "Select the second fruit");
         } else {
           console.log("level done 0");
 
@@ -147,7 +147,7 @@ export class GameScene extends Phaser.Scene {
 
           // this.talkingBubbleText.depth += 1;
           // this.talkingBubbleText2.setVisible(false);
-          showText(this, this.talkingBubbleText, `Way to go! \nYou just Scored ${reward}$ \nKeababies store credit`);
+          showText(this, this.talkingBubbleText, `Way to go! \nYou just scored $${reward} \nKeaBabies store credit`);
 
           this.time.addEvent({
             delay: 4000,
