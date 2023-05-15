@@ -174,3 +174,8 @@ export function StopSound() {
   currentCookingSound.stop();
 }
 
+export let option = {
+  firstFruitName: "",
+  currentFruitName: "",
+}
+

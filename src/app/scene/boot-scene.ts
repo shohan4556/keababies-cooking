@@ -53,6 +53,9 @@ export class BootScene extends Phaser.Scene {
     this.load.image('Avocado_and_Pear_or_Apple_Puree_1', 'assets/Fruits/Diced_Fruits_and_Puree/Avocado_and_Pear_or_Apple_Puree_1.png');
     this.load.image('Avocado_and_Pear_or_Apple_Puree_2', 'assets/Fruits/Diced_Fruits_and_Puree/Avocado_and_Pear_or_Apple_Puree_2.png');
     this.load.image('Avocado_and_Pear_or_Apple_Puree_3', 'assets/Fruits/Diced_Fruits_and_Puree/Avocado_and_Pear_or_Apple_Puree_3.png');
+    this.load.image('Apple_Puree_1', 'assets/Fruits/Diced_Fruits_and_Puree/Avocado_and_Pear_or_Apple_Puree_1.png');
+    this.load.image('Pear_Puree_1', 'assets/Fruits/Diced_Fruits_and_Puree/Avocado_and_Pear_or_Apple_Puree_1.png');
+
 
     //Avocado_Puree
     this.load.image('Avocado_Puree_1', 'assets/Fruits/Diced_Fruits_and_Puree/Avocado_Puree_1.png');
