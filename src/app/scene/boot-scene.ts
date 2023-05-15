@@ -10,7 +10,7 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload(): void {
-    console.log('version 0.01');
+    console.log('version 0.02');
 
     this.load.image('Cupboard', 'assets/Background/Cupboard.png');
     this.load.image('Desk', 'assets/Background/Desk.png');
@@ -108,12 +108,12 @@ export class BootScene extends Phaser.Scene {
 
     // load audio
     this.load.audio('bg_music', ['assets/music/Background_music.mp3']);
-    this.load.audio('game_ui', ['assets/music/Game_UI.mp3']);
+    this.load.audio('game_ui', ['assets/sfx/Game_UI.mp3']);
     this.load.audio('mix_sound', ['assets/music/Mix_sound.mp3']);
     this.load.audio('pouring_sound', ['assets/music/Pouring_sound.mp3']);
     this.load.audio('remove_seed', ['assets/music/Remove_seed_sound.mp3']);
-    this.load.audio('Simmer_sound', ['assets/music/Simmer_sound.mp3']);
-    this.load.audio('Mash_sound', ['assets/music/Mash_sound.mp3']);
+    this.load.audio('Simmer_sound', ['assets/sfx/Simmer_sound.mp3']);
+    this.load.audio('Mash_sound', ['assets/sfx/Mash_sound.mp3']);
 
     this.load.audio('kea_talk', ['assets/sfx/kea.mp3']);
     this.load.audio('chop_pean', ['assets/sfx/chop_peal.mp3']);
