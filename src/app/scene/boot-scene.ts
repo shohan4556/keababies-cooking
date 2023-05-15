@@ -18,7 +18,7 @@ export class BootScene extends Phaser.Scene {
     this.load.image('PottedPlant', 'assets/Background/PottedPlant.png');
     this.load.image('TalkingBubble', 'assets/Background/TalkingBubble.png');
     this.load.image('Tableware', 'assets/Background/Tableware.png');
-    this.load.image('Wall', './assets/Background/Wal.png');
+    this.load.image('Wall', '.assets/Background/Wal.png');
     this.load.image('Window', 'assets/Background/Window.png');
     this.load.image('Kea_1_Mouth_closed', 'assets/Talkingbird/Kea_1_Mouth_closed.png');
     this.load.image('Kea_1_Mouth_opened', 'assets/Talkingbird/Kea_1_Mouth_opened.png');
