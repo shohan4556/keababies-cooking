@@ -192,7 +192,7 @@ export class GameScene extends Phaser.Scene {
             350
           );
           this.cupBoard = this.add.image(200, 580, "Cupboard").setDepth(0);
-          this.cupBoard.setScale(0.13);
+          this.cupBoard.setScale(0.26);
           this.talkingBird.setDepth(1);
           //showText(this, this.talkingBubbleText, "Pick the first ingredient");
         }
@@ -207,7 +207,7 @@ export class GameScene extends Phaser.Scene {
 
   private createBackground(): void {
     this.cupBoard = this.add.image(200, 580, "Cupboard");
-    this.cupBoard.setScale(0.13);
+    this.cupBoard.setScale(0.26);
     this.wall = this.add.image(150, 112, "Window");
     this.wall.setScale(0.1);
     this.tableWare = this.add.image(515, 340, "Tableware").setScale(0.12).setDepth(3);
@@ -297,7 +297,7 @@ export class GameScene extends Phaser.Scene {
   private Step_02(): void {
     this.cupBoard = this.add
       .image(200, 600, "Cupboard")
-      .setScale(0.13)
+      .setScale(0.26)
       .setAlpha(0)
       .setDepth(2);
     this.desk = this.add
