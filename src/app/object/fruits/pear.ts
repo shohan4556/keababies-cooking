@@ -61,6 +61,7 @@ export class Pear extends Phaser.GameObjects.Image {
 
     private DiceTheFruits(): void {
 
+
         // dice step 1
         let pear_3 = this.scene.add.image(this.x, this.y, "Pear_3").setScale(0.15).setDepth(12);
         let pear_4 = this.scene.add.image(this.x, 330, "Pear_4").setScale(0.15).setDepth(12);

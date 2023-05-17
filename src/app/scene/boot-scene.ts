@@ -117,6 +117,7 @@ export class BootScene extends Phaser.Scene {
     this.load.audio('remove_seed', ['assets/music/Remove_seed_sound.mp3']);
     this.load.audio('Simmer_sound', ['assets/sfx/Simmer_sound.mp3']);
     this.load.audio('Mash_sound', ['assets/sfx/Mash_sound.mp3']);
+    this.load.audio('Dice_sound', ['assets/music/Dice_sound.mp3']);
 
     this.load.audio('kea_talk', ['assets/sfx/kea.mp3']);
     this.load.audio('chop_pean', ['assets/sfx/chop_peal.mp3']);
@@ -141,8 +142,8 @@ export class BootScene extends Phaser.Scene {
     //     families: ['Poppins', 'Poppins-Bold'],
     //   },
     // });
-    // this.scene.start("IntroScene");
-    this.scene.start('GameScene');
+    this.scene.start("IntroScene");
+    //this.scene.start('GameScene');
   }
 
 }
