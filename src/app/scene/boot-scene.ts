@@ -111,15 +111,17 @@ export class BootScene extends Phaser.Scene {
 
     // load audio
     this.load.audio('bg_music', ['assets/music/Background_music.mp3']);
-    this.load.audio('game_ui', ['assets/sfx/Game_UI.mp3']);
+    this.load.audio('dice_sound', ['assets/music/Dice_sound.mp3']);
     this.load.audio('mix_sound', ['assets/music/Mix_sound.mp3']);
     this.load.audio('pouring_sound', ['assets/music/Pouring_sound.mp3']);
     this.load.audio('remove_seed', ['assets/music/Remove_seed_sound.mp3']);
     this.load.audio('Simmer_sound', ['assets/sfx/Simmer_sound.mp3']);
-    this.load.audio('Mash_sound', ['assets/sfx/Mash_sound.mp3']);
 
-    this.load.audio('kea_talk', ['assets/sfx/kea.mp3']);
+
     this.load.audio('chop_pean', ['assets/sfx/chop_peal.mp3']);
+    this.load.audio('game_ui', ['assets/sfx/Game_UI.mp3']);
+    this.load.audio('kea_talk', ['assets/sfx/kea.mp3']);
+    this.load.audio('Mash_sound', ['assets/sfx/Mash_sound.mp3']);
 
     // plugins
     this.load.script('webfont', '../src/assets/plugins/webfont.js');
