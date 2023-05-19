@@ -74,7 +74,7 @@ export class GameScene extends Phaser.Scene {
         { key: "Kea_1_Mouth_closed", duration: 90 },
       ],
       frameRate: 8,
-      repeat: 0, // todo reset here when deploy
+      repeat: 6, // todo reset here when deploy
     });
 
     this.anims.create({
