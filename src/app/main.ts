@@ -1,7 +1,7 @@
 import 'phaser';
 import { BootScene } from './scene/boot-scene';
 import { GameScene } from './scene/game-scene';
-import { IntroScene } from './scene/IntroScene';
+// import { IntroScene } from './scene/IntroScene';
 
 
 const config = {
@@ -25,7 +25,7 @@ const config = {
       // gravity: {y : 110}
     }
   },
-  scene: [BootScene, IntroScene, GameScene]
+  scene: [BootScene, GameScene]
 };
 
 

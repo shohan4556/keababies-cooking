@@ -41,6 +41,7 @@ export class GameScene extends Phaser.Scene {
   private matchedFruit = [];
   private targetFruit = [];
   private firstFruitsSelected: Boolean = false;
+  private bgMusic = null;
 
   constructor() {
     super({ key: "GameScene" });
@@ -73,7 +74,7 @@ export class GameScene extends Phaser.Scene {
         { key: "Kea_1_Mouth_closed", duration: 90 },
       ],
       frameRate: 8,
-      repeat: 0, 
+      repeat: 0, // todo reset here when deploy
     });
 
     this.anims.create({
@@ -84,7 +85,7 @@ export class GameScene extends Phaser.Scene {
         { key: "Avocado_Puree_2", duration: 100 },
       ],
       frameRate: 8,
-      repeat: 3, 
+      repeat: 3,
     });
 
     this.anims.create({
@@ -97,7 +98,7 @@ export class GameScene extends Phaser.Scene {
         { key: "Apple_and_Pear_Puree_2", duration: 80 }
       ],
       frameRate: 8,
-      repeat: 2, 
+      repeat: 2,
     });
 
     this.anims.create({
@@ -110,7 +111,7 @@ export class GameScene extends Phaser.Scene {
         { key: "Peach_and_Pear_or_Apple_or_Avocado_Puree_3", duration: 80 }
       ],
       frameRate: 8,
-      repeat: 2, 
+      repeat: 2,
     });
   }
 
@@ -295,6 +296,10 @@ export class GameScene extends Phaser.Scene {
   }
 
   private Step_02(): void {
+    this.bgMusic = this.sound.add('bg_music');
+    this.bgMusic.volume = 0.2;
+    this.bgMusic.play({ loop: true });
+
     this.cupBoard = this.add
       .image(200, 600, "Cupboard")
       .setScale(0.26)
@@ -409,7 +414,7 @@ export class GameScene extends Phaser.Scene {
       option.currentFruitName = selectedFruit.name;
       this.firstFruitsSelected = false;
     } else {
-      console.log("First fruits "+selectedFruit.name)
+      console.log("First fruits " + selectedFruit.name)
       option.firstFruitName = selectedFruit.name;
       this.firstFruitsSelected = true;
     }
@@ -418,7 +423,7 @@ export class GameScene extends Phaser.Scene {
     this.matchedFruit.push(selectedFruit.name);
     //? selected fruit here 
     console.log("Step_04:Selected Fruit", selectedFruit.name, this.fruitList);
-    
+
 
 
     selectedFruit.setPosition(this.cameras.main.centerX, -110);
