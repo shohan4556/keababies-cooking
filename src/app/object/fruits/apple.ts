@@ -110,7 +110,7 @@ export class Apple extends Phaser.GameObjects.Image {
                                 this.handContainer.visible = false;
                                 let soucepan = this.scene.add.image(this.x, this.y + 100, "Soucepan").setDepth(13).setScale(.1).setAlpha(0);
                                 alphaTween(this.scene, soucepan, 1, 200, 500);
-                                showText(this.scene, this.talkingBubbleText, "Simmer in a saucepen");
+                                showText(this.scene, this.talkingBubbleText, "Simmer in a saucepan");
                                 this.handContainer.setPosition(this.x + 120, this.y - 300);
                                 this.handContainer.ShowOnlyHand();
 

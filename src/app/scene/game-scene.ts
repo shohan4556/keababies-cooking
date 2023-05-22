@@ -247,7 +247,7 @@ export class GameScene extends Phaser.Scene {
 
     // if (!this.isGameOver) {
     this.talkingBubbleText = this.add
-      .text(250, 160, `Let's get started! \nPlease make me a \n${prop} Puree`, {
+      .text(250, 160, `Please make me a \n${prop} Puree`, {
         fontSize: "28px",
         color: "black",
         fontFamily: "Poppins-Regular",
@@ -261,8 +261,16 @@ export class GameScene extends Phaser.Scene {
     //   fontFamily: "Poppins-Bold",
     // }).setAlpha(0);
     // }
+    setTimeout(() => {
+      hideObject(this, [this.talkingBubbleText], 300);
+      this.talkingBubbleText.setText(`Let's get started!\n`);
+
+      showObject(this, [this.talkingBubbleText], 500);
+    }, 4000);
+
     this.talkingBird.on("animationstart", () => {
-      showObject(this, [this.talkingBubbleText, this.talkingBubble], 350);
+      console.log("animation complete");
+      showObject(this, [this.talkingBubbleText, this.talkingBubble], 500);
     });
 
     this.talkingBird.on("animationcomplete-step_01_bird_talking", () => {
