@@ -139,7 +139,9 @@ export class GameScene extends Phaser.Scene {
 
           this.talkingBird.play("step_01_bird_talking");
           const talkSfx = this.sound.add('kea_talk');
-          talkSfx.play({ loop: false });
+          window.setTimeout(() => {
+            talkSfx.play({ loop: false });
+          }, 100);
 
           this.isLevelDone = true;
           this.isGameOver = true;
@@ -304,9 +306,12 @@ export class GameScene extends Phaser.Scene {
   }
 
   private Step_02(): void {
-    this.bgMusic = this.sound.add('bg_music');
-    this.bgMusic.volume = 0.2;
-    this.bgMusic.play({ loop: true });
+    window.setTimeout(() => {
+      this.bgMusic = this.sound.add('bg_music');
+      this.bgMusic.volume = 0.2;
+      this.bgMusic.play({ loop: true });
+    }, 500);
+
 
     this.cupBoard = this.add
       .image(200, 600, "Cupboard")
