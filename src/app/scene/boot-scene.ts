@@ -133,7 +133,7 @@ export class BootScene extends Phaser.Scene {
   create() { }
 
   complete(): void {
-    console.log('version 0.5');
+    console.log('version 0.6');
     // console.log('complete', this.scene.systems.plugins);
     // WebFont.load({
     //   google: {
