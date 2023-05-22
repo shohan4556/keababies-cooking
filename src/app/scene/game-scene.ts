@@ -207,7 +207,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   private createBackground(): void {
-    this.cupBoard = this.add.image(200, 580, "Cupboard");
+    this.cupBoard = this.add.image(200, 560, "Cupboard");
     this.cupBoard.setScale(0.26);
     this.wall = this.add.image(150, 112, "Window");
     this.wall.setScale(0.1);
@@ -509,7 +509,11 @@ export class GameScene extends Phaser.Scene {
     );
   }
 
-  update(time: number, delta: number): void { }
+  update(time: number, delta: number): void {
+    if (this.game.sound.context === 'suspended') {
+      this.game.sound.context.resume();
+    }
+  }
 
   private HideAllFruits() {
     this.fruitList.forEach((element) => {
