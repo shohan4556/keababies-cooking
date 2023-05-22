@@ -130,10 +130,16 @@ export class BootScene extends Phaser.Scene {
 
   }
 
-  create() { }
+  create() {
+
+  }
 
   complete(): void {
-    console.log('version 0.6');
+    console.log('version 0.7');
+    setTimeout(() => {
+      console.log('clicked');
+      document.body.click();
+    }, 100);
     // console.log('complete', this.scene.systems.plugins);
     // WebFont.load({
     //   google: {

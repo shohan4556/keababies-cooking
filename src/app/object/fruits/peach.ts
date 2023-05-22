@@ -42,6 +42,9 @@ export class Peach extends Phaser.GameObjects.Image {
         slice.visible = false;
         // hand container
         this.handContainer.ShowSkinPeeler();
+        // this.handContainer.visible = true;
+        // this.handContainer.ShowKnfie();
+        console.log('hand container', this.handContainer);
         this.scene.tweens.add({
             targets: this.handContainer,
             y: 620,

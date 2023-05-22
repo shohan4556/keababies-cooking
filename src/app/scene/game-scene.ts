@@ -464,7 +464,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   private handlePeach() {
-    showText(this, this.talkingBubbleText, "Slice the fruit in half");
+    showText(this, this.talkingBubbleText, "Peel the skin");
     this.peach = new Peach(
       this,
       this.centerX,
